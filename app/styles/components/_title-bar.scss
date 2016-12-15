@@ -1,0 +1,25 @@
+/* Globals */
+body {
+  // background: #e6e6e6;
+  font-family: 'Lato', sans-serif;
+}
+
+.container {
+  background: white;
+  width: 75%;
+  margin: auto;
+}
+/* Title bar */
+.top-bar {
+  font-size: 1.3rem;
+  margin-bottom: 2rem;
+  padding-top: 10px;
+
+  .top-bar-left {
+
+  }
+
+  .top-bar-right {
+    font-size: 1rem;
+  }
+}
