@@ -3,7 +3,7 @@ import React from 'react';
 const TitleBar = () => (
   <div className="top-bar">
     <div className="top-bar-left">
-      <p className="menu-text">My Recipe Box</p>
+      <p className="menu-text">My Recipes</p>
     </div>
     <div className="top-bar-right">
       <p className="menu-text">View source code on
