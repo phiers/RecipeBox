@@ -3,12 +3,15 @@ body {
   background: goldenrod;
   font-family: 'Lato', sans-serif;
 }
-
+button:focus,
+button:active {
+  outline: none;
+}
 .container {
   width: 100%;
   margin: auto;
   a.button.create {
-    background: navy;
+    background: darken(brown, 10%);
   }
 }
 /* recipe list */
