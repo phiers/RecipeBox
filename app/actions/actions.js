@@ -1,5 +1,5 @@
 const actions = {
-  addIngredient(ingredient) {
+  addIngredient(ingredient) { // might not need
     return {
       type: 'ADD_INGREDIENT',
       ingredients,

@@ -24,24 +24,29 @@
       text-decoration: underline;
       padding-top: 1rem;
     }
-    .ingredient-list {
+    .ingredients-list-item {
       display: flex;
+      margin-bottom: .1rem;
       padding-top: 0;
-
-
+      text-decoration: none;
       input.qnty {
         flex: 1;
-        margin-bottom: .5rem;
+        margin: .5rem 0;
         padding: 0 0 0 5px;
       }
       input.ingredient {
         flex: 3;
-        margin-bottom: .5rem;
+        margin: .5rem 0;
         padding: 0 0 0 5px;
       }
+      em {
+        padding-right: .4em;
+        color: #2199E8;
+      }
       button {
-        padding-left: 5px;
-        padding-bottom: 1rem;
+        font-size: 1.5rem;
+        padding: 0 12px 3px 12px;
+        margin: .5rem 0;
       }
     }
 

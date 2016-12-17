@@ -1,43 +1,57 @@
 import React, { Component, PropTypes } from 'react';
-import { Link } from 'react-router';
+import { Link, browserHistory } from 'react-router';
+
+import RecipeItem from 'RecipeItem';  // eslint-disable-line
+/* eslint-env browser */
 
 export default class AddRecipe extends Component {
   constructor() {
     super();
+    this.state = { ingredients: [] };
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.addLine = this.addLine.bind(this);
+    this.handleAddItem = this.handleAddItem.bind(this);
+  }
+  handleAddItem(qnty, item) {
+    if (qnty.length > 0 || item.length > 0) {
+      const newIngredients = this.state.ingredients;
+      this.setState({
+        ingredients:
+        [
+          ...newIngredients,
+          {
+            id: Date.now().toString().substring(8),
+            qnty,
+            item,
+          },
+        ],
+      });
+    }
   }
   handleSubmit(evt) {
     evt.preventDefault();
-    /* eslint-disable no-undef */
     const name = document.getElementById('name').value;
-    const ingredients = document.querySelector('.ingredient').value;
-    const quantity = document.querySelector('.qnty').value;
     const notes = document.getElementById('notes').value;
+    const ingredients = this.state.ingredients;
     const newRecipe = {
       expanded: true,
       name,
       notes,
-      ingredients: [
-        {
-          quantity,
-          item: ingredients,
-        },
-      ],
+      ingredients,
     };
-    console.log(newRecipe);
+    if (newRecipe.name) {
+      console.log(newRecipe);
+      browserHistory.push('/');
+    } else {
+      document.getElementById('name').focus();
+    }
   }
-  /* eslint-enable no-undef */
-  addLine() {
-    return (
-      <div className="ingredient-list">
-        <input type="text" className="qnty" placeholder="quantity" />
-        <input type="text" className="ingredient" placeholder="ingredient" />
-        <button onClick={this.addLine}>+</button>
-      </div>
+  renderIngredientsList() {
+    return this.state.ingredients.map(ingredient =>
+      <li key={ingredient.id} className="ingredients-list-item">
+        <em>{`${ingredient.qnty}`}</em>{`${ingredient.item}`}
+      </li>,
     );
   }
-
   render() {
     return (
       <div className="add-card">
@@ -47,36 +61,9 @@ export default class AddRecipe extends Component {
             <input type="text" id="name" className="recipe-name" placeholder="recipe name..." />
             <div id="ingredients-list">
               <p>Ingredients:</p>
-              <div className="ingredient-list">
-                <input type="text" className="qnty" placeholder="quantity" />
-                <input type="text" className="ingredient" placeholder="ingredient" />
-              </div>
-              <div className="ingredient-list">
-                <input type="text" className="qnty" placeholder="quantity" />
-                <input type="text" className="ingredient" placeholder="ingredient" />
-              </div>
-              <div className="ingredient-list">
-                <input type="text" className="qnty" placeholder="quantity" />
-                <input type="text" className="ingredient" placeholder="ingredient" />
-              </div>
-              <div className="ingredient-list">
-                <input type="text" className="qnty" placeholder="quantity" />
-                <input type="text" className="ingredient" placeholder="ingredient" />
-              </div>
-              <div className="ingredient-list">
-                <input type="text" className="qnty" placeholder="quantity" />
-                <input type="text" className="ingredient" placeholder="ingredient" />
-              </div>
-              <div className="ingredient-list">
-                <input type="text" className="qnty" placeholder="quantity" />
-                <input type="text" className="ingredient" placeholder="ingredient" />
-              </div>
-              <div className="ingredient-list">
-                <input type="text" className="qnty" placeholder="quantity" />
-                <input type="text" className="ingredient" placeholder="ingredient" />
-              </div>
+              <ul>{this.renderIngredientsList()}</ul>
+              <RecipeItem addItem={this.handleAddItem} />
             </div>
-            <button className="secondary button small" onClick={this.addLine}>Add Line</button>
             <p>Notes:</p>
             <textarea id="notes" placeholder="Enter notes..." />
             <div className="small button-group">
