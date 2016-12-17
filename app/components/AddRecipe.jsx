@@ -1,10 +1,13 @@
 import React, { Component, PropTypes } from 'react';
 import { Link, browserHistory } from 'react-router';
+import { connect } from 'react-redux';
+import uuidV4 from 'uuid/v4';
 
 import RecipeItem from 'RecipeItem';  // eslint-disable-line
+import actions from 'actions'; // eslint-disable-line
 /* eslint-env browser */
 
-export default class AddRecipe extends Component {
+class AddRecipe extends Component {
   constructor() {
     super();
     this.state = { ingredients: [] };
@@ -29,17 +32,19 @@ export default class AddRecipe extends Component {
   }
   handleSubmit(evt) {
     evt.preventDefault();
+    const { dispatch } = this.props;
     const name = document.getElementById('name').value;
     const notes = document.getElementById('notes').value;
     const ingredients = this.state.ingredients;
     const newRecipe = {
+      id: uuidV4(),
       expanded: true,
       name,
       notes,
       ingredients,
     };
     if (newRecipe.name) {
-      console.log(newRecipe);
+      dispatch(actions.addRecipe(newRecipe));
       browserHistory.push('/');
     } else {
       document.getElementById('name').focus();
@@ -77,3 +82,9 @@ export default class AddRecipe extends Component {
     );
   }
 }
+
+export default connect()(AddRecipe);
+
+AddRecipe.propTypes = {
+  dispatch: PropTypes.func,
+};

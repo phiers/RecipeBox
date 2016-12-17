@@ -1,30 +1,36 @@
 import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
+import { connect } from 'react-redux';
 
 /* eslint-disable max-len */
 
-export default class Recipe extends Component {
+class Recipe extends Component {
   render() {
+    const { name, notes, ingredients } = this.props;
+    const renderIngredientsList = () => {
+      return ingredients.map(i => (
+        <p key={i.id} className="ingredients">
+          <span className="qnty">{i.qnty}</span>
+          <span className="ingredient">{i.item}</span>
+        </p>
+        ),
+      );
+    };
     return (
       <div className="card">
         <div className="card-header">
-          <h4>Prime Rib</h4>
+          <h4>{name}</h4>
           <button>+</button>
         </div>
         <div className="card-detail">
           <h5>Ingredients:</h5>
           <div className="ingredient-list">
-            <p className="ingredients"><span className="qnty">some qnty</span><span className="ingredient">some ingredient</span></p>
-            <p className="ingredients"><span className="qnty">some qnty</span><span className="ingredient">some ingredient</span></p>
-            <p className="ingredients"><span className="qnty">some qnty</span><span className="ingredient">some ingredient</span></p>
-            <p className="ingredients"><span className="qnty">some qnty</span><span className="ingredient">some ingredient</span></p>
-            <p className="ingredients"><span className="qnty">some qnty</span><span className="ingredient">some ingredient</span></p>
-            <p className="ingredients"><span className="qnty">some qnty</span><span className="ingredient">some ingredient</span></p>
+            {renderIngredientsList()}
           </div>
           <h5>Notes:</h5>
-          <p>Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Vivamus suscipit tortor eget felis porttitor volutpat. Curabitur aliquet quam id dui posuere blandit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin eget tortor risus. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Nulla porttitor accumsan tincidunt. Nulla quis lorem ut libero malesuada feugiat. Vivamus suscipit tortor eget felis porttitor volutpat.</p>
+          <p>{notes}</p>
           <hr />
-          <div className="small button-group">
+          <div className="button-group">
             <Link to="/edit/123" className="button success">Edit</Link>
             <a className="button alert">Delete</a>
           </div>
@@ -33,3 +39,5 @@ export default class Recipe extends Component {
     );
   }
 }
+
+export default connect()(Recipe);

@@ -2,9 +2,9 @@ const actions = {
   addIngredient(ingredient) { // might not need
     return {
       type: 'ADD_INGREDIENT',
-      ingredients,
-    }
-  }
+      ingredient,
+    };
+  },
   addRecipe(recipe) {
     return {
       type: 'ADD_RECIPE',

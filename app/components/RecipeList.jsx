@@ -1,112 +1,35 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
+import { connect } from 'react-redux';
 
 /* eslint-disable */
 import Recipe from 'Recipe';
+import recipesAPI from 'recipesAPI';
 /* eslint-enable */
 
-export default class RecipeList extends Component {
-  constructor() {
-    super();
-    this.state = {
-      recipes: recipes, //eslint-disable-line
-    };
-  }
+class RecipeList extends Component {
   render() {
+    const { recipes } = this.props;
+    const renderRecipes = () => {
+      if (recipes.length === 0) {
+        return (
+          <p>No recipes yet</p>
+        );
+      }
+      return recipesAPI.getRecipes(recipes).map(recipe =>
+        <Recipe key={recipe.id} {...recipe} />,
+      );
+    };
+
     return (
       <div>
-        <div className="recipe-list">
-          <Recipe recipes={this.state.recipes} />
-        </div>
         <Link to="/create" className="button success create">Add New Recipe</Link>
+        <div className="recipe-list">
+          {renderRecipes()}
+        </div>
       </div>
     );
   }
 }
-
-const recipes = [
-  {
-    id: 1,
-    name: 'Recipe 1',
-    expanded: false,
-    ingredients: [
-      {
-        id: 1,
-        qnty: '1 tsp',
-        item: 'sugar',
-      },
-      {
-        id: 2,
-        qnty: '1 tbsp',
-        item: 'flour',
-      },
-      {
-        id: 3,
-        qnty: '1 20 oz can',
-        item: 'whole tomatoes',
-      },
-      {
-        id: 4,
-        qnty: '1 pound',
-        item: 'spaghetti',
-      },
-    ],
-    notes: 'Recipe handed down by Mom',
-  },
-  {
-    id: 2,
-    name: 'Recipe 3',
-    expanded: false,
-    ingredients: [
-      {
-        id: 1,
-        qnty: '1 tsp',
-        item: 'sugar',
-      },
-      {
-        id: 2,
-        qnty: '1 tbsp',
-        item: 'flour',
-      },
-      {
-        id: 3,
-        qnty: '1 20 oz can',
-        item: 'whole tomatoes',
-      },
-      {
-        id: 4,
-        qnty: '1 pound',
-        item: 'spaghetti',
-      },
-    ],
-    notes: 'Recipe handed down by Mom',
-  },
-  {
-    id: 3,
-    name: 'Recipe 3',
-    expanded: false,
-    ingredients: [
-      {
-        id: 1,
-        qnty: '1 tsp',
-        item: 'sugar',
-      },
-      {
-        id: 2,
-        qnty: '1 tbsp',
-        item: 'flour',
-      },
-      {
-        id: 3,
-        qnty: '1 20 oz can',
-        item: 'whole tomatoes',
-      },
-      {
-        id: 4,
-        qnty: '1 pound',
-        item: 'spaghetti',
-      },
-    ],
-    notes: 'Recipe handed down by Mom',
-  },
-];
+// this makes redux state available as props
+export default connect(state => state)(RecipeList);
