@@ -17,6 +17,11 @@ button:active {
 /* recipe list */
 .recipe-list {
   margin-bottom: 2rem;
+  a {
+    color: darkred;
+    font-size: 2rem;
+    text-decoration: underline;
+  }
 }
 
 @media only screen and (min-device-width: 490px) {

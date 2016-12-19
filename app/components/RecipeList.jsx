@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router';
 
 /* eslint-disable */
 import Recipe from 'Recipe';
@@ -13,9 +14,7 @@ class RecipeList extends Component {
     const { recipes } = this.props;
     const renderRecipes = () => {
       if (recipes.length === 0) {
-        return (
-          <p>No recipes yet</p>
-        );
+        return <Link to="/create">Click here to add your first recipe!</Link>;
       }
       const sortedRecipes = recipesAPI.getRecipes().sort((a, b) => a.name > b.name);
       return sortedRecipes.map(recipe =>

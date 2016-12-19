@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, IndexLink } from 'react-router';
 
 const activeStyle = {
-  background: '#e6e6e6',
+  background: 'goldenrod',
   color: 'black',
   fontWeight: 'bold',
 };
@@ -18,7 +18,7 @@ const TitleBar = () => (
     </ul>
     <div className="top-bar-right">
       <p className="menu-text">View source code on
-        <a href="https://github.com/phiers/RecipeBox" rel="noopener noreferrer" target="_blank"> Github</a>
+        <a href="https://github.com/phiers/RecipeBox" rel="noopener noreferrer" target="_blank"> GitHub </a>
       </p>
     </div>
   </div>

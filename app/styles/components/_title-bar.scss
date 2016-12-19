@@ -15,18 +15,22 @@
   }
 
   .top-bar-right {
-    font-size: 1rem;
+    font-size: .9rem;
+
+    a {
+      color: yellow;
+      font-size: 1.3rem;
+    }
+    a:hover {
+      color: goldenrod;
+      font-size: 1.5rem;
+    }
   }
   .menu {
     background: black;
 
     li a{
       color: white;
-    }
-
-    .active > a {
-      background: #e6e6e6;
-      color: black;
     }
   }
 }
