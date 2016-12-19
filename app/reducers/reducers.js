@@ -11,7 +11,15 @@ export const recipesReducer = (state = [], action) => {
         ...state,
         ...action.recipes,
       ];
+    case 'REMOVE_RECIPE':
+      // filter creates a new array, so no need to add ...state
+      return state.filter(item => item.id !== action.id);
     default:
       return state;
   }
 };
+// removeRecipe(id) {
+//   const recipesArray = JSON.parse(localStorage.getItem('recipes'));
+//   const newArray = recipesArray.filter(item => item.id !== id);
+//   localStorage.setItem('recipes', JSON.stringify(newArray));
+// },

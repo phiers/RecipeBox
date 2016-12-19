@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router';
 import { connect } from 'react-redux';
 
 /* eslint-disable */
 import Recipe from 'Recipe';
 import recipesAPI from 'recipesAPI';
+import actions from 'actions';
 /* eslint-enable */
 
 class RecipeList extends Component {
+
   render() {
     const { recipes } = this.props;
     const renderRecipes = () => {
@@ -23,7 +24,6 @@ class RecipeList extends Component {
 
     return (
       <div>
-        <Link to="/create" className="button success create">Add New Recipe</Link>
         <div className="recipe-list">
           {renderRecipes()}
         </div>

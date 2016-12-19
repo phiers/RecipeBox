@@ -23,6 +23,12 @@ const actions = {
       id,
     };
   },
+  removeRecipe(id) {
+    return {
+      type: 'REMOVE_RECIPE',
+      id,
+    };
+  },
   setSearchText(searchText) {
     return {
       type: 'SET_SEARCH_TEXT',

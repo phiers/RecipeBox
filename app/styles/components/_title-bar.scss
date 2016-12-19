@@ -8,11 +8,26 @@
   padding-top: 10px;
 
   .top-bar-left {
-
+    p {
+      font-size: 1.5rem;
+      margin-right: 2rem;
+    }
   }
 
   .top-bar-right {
     font-size: 1rem;
+  }
+  .menu {
+    background: black;
+
+    li a{
+      color: white;
+    }
+
+    .active > a {
+      background: #e6e6e6;
+      color: black;
+    }
   }
 }
 

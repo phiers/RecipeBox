@@ -77,7 +77,6 @@ class AddRecipe extends Component {
             </div>
           </div>
         </form>
-        <Link to="/">Back to List</Link>
       </div>
     );
   }

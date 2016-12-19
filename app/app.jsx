@@ -29,7 +29,7 @@ require('style!css!sass!applicationStyles');
 ReactDOM.render(
   <Provider store={store}>
     <Router history={browserHistory}>
-      <Route path="/" component={Main} >
+      <Route path="/" component={Main}>
         <Route path="create" component={AddRecipe} />
         <Route path="edit/:id" component={EditRecipe} />
         <IndexRoute component={RecipeList} />
