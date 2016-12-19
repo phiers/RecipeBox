@@ -1,5 +1,5 @@
 
-export const recipesReducer = (state = [], action) => {
+const recipesReducer = (state = [], action) => {
   switch (action.type) {
     case 'ADD_RECIPE':
       return [
@@ -11,15 +11,35 @@ export const recipesReducer = (state = [], action) => {
         ...state,
         ...action.recipes,
       ];
+
+    case 'EDIT_RECIPE': {
+      const newState = state.filter(item => item.id !== action.id);
+      return [
+        ...newState,
+        action.editedRecipe,
+      ];
+    }
+
     case 'REMOVE_RECIPE':
       // filter creates a new array, so no need to add ...state
       return state.filter(item => item.id !== action.id);
+
+    case 'TOGGLE_RECIPE_DETAILS':
+      return state.map((recipe) => {
+        if (recipe.id === action.id) {
+          const nextExpanded = !recipe.expanded;
+
+          return {
+            ...recipe,
+            expanded: nextExpanded,
+          };
+        }
+        return recipe;
+      });
+
     default:
       return state;
   }
 };
-// removeRecipe(id) {
-//   const recipesArray = JSON.parse(localStorage.getItem('recipes'));
-//   const newArray = recipesArray.filter(item => item.id !== id);
-//   localStorage.setItem('recipes', JSON.stringify(newArray));
-// },
+
+export default recipesReducer;

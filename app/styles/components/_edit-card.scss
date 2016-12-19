@@ -1,0 +1,82 @@
+.edit-card {
+
+  h4 {
+    background: black;
+    padding-left: .6rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    margin-bottom: 0;
+    color: white;
+  }
+  .card-detail {
+    background: beige;
+    border: .5px solid black;
+    padding-left: .6rem;
+    padding-right: .6rem;
+    padding-top: 1rem;
+
+    input.recipe-name {
+      margin: 0 0 0 0;
+
+    }
+
+    p {
+      text-decoration: underline;
+      padding-top: 1rem;
+    }
+    .ingredients-list-item {
+      display: flex;
+      margin-bottom: .1rem;
+      padding-top: 0;
+      text-decoration: none;
+
+      input.qnty,
+      input.qnty-add,
+      input.qnty-edit {
+        flex: 1;
+        margin: .5rem 0;
+        padding: 0 0 0 5px;
+      }
+      input.ingredient,
+      input.ingredient-add,
+      input.ingredient-edit {
+        flex: 3;
+        margin: .5rem 0;
+        padding: 0 0 0 5px;
+      }
+      em {
+        padding-right: .4em;
+        color: #2199E8;
+      }
+      button {
+        font-size: 1.5rem;
+        padding: 0 12px 3px 12px;
+        margin: .5rem 0;
+      }
+    }
+
+    textarea {
+      min-height: 10rem;
+    }
+
+    .button-group {
+      display: flex;
+      margin-top: 1rem;
+      width: 50%;
+      a {
+        color: white;
+      }
+      button.button.success,
+      a.button.alert {
+        flex: 1;
+        box-sizing: border-box;
+        margin-bottom: 1rem;
+      }
+      a.button.alert {
+        margin-right: .5rem;
+        margin-left: .5rem;
+      }
+    }
+  }
+
+}

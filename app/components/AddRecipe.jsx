@@ -22,7 +22,7 @@ class AddRecipe extends Component {
         [
           ...newIngredients,
           {
-            id: Date.now().toString().substring(8),
+            id: uuidV4(),
             qnty,
             item,
           },

@@ -17,10 +17,11 @@ const actions = {
       recipes,
     };
   },
-  editRecipe(id) {
+  editRecipe(id, editedRecipe) {
     return {
       type: 'EDIT_RECIPE',
       id,
+      editedRecipe,
     };
   },
   removeRecipe(id) {

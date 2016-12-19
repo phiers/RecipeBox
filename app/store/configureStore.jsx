@@ -1,5 +1,5 @@
 import { createStore, combineReducers } from 'redux';
-import { recipesReducer } from 'reducers'; // eslint-disable-line
+import recipesReducer from 'reducers'; // eslint-disable-line
 
 const reducer = combineReducers({
   recipes: recipesReducer,

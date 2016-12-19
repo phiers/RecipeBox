@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 
 /* eslint-disable */
@@ -17,7 +17,8 @@ class RecipeList extends Component {
           <p>No recipes yet</p>
         );
       }
-      return recipesAPI.getRecipes(recipes).map(recipe =>
+      const sortedRecipes = recipesAPI.getRecipes().sort((a, b) => a.name > b.name);
+      return sortedRecipes.map(recipe =>
         <Recipe key={recipe.id} {...recipe} />,
       );
     };
@@ -33,3 +34,7 @@ class RecipeList extends Component {
 }
 // this makes redux state available as props
 export default connect(state => state)(RecipeList);
+
+RecipeList.propTypes = {
+  recipes: PropTypes.array, // eslint-disable-line
+};
