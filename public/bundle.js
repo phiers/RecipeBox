@@ -32523,7 +32523,11 @@
 	              null,
 	              'Notes:'
 	            ),
-	            _react2.default.createElement('input', { type: 'text', id: 'notes', defaultValue: notes }),
+	            _react2.default.createElement(
+	              'textarea',
+	              { type: 'text', id: 'notes' },
+	              notes
+	            ),
 	            _react2.default.createElement('hr', null),
 	            _react2.default.createElement(
 	              'div',

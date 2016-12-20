@@ -97,7 +97,7 @@ class EditRecipe extends Component {
               <RecipeItem addItem={this.handleNewItem} />
             </div>
             <h5>Notes:</h5>
-            <input type="text" id="notes" defaultValue={notes} />
+            <textarea type="text" id="notes">{notes}</textarea>
             <hr />
             <div className="button-group">
               <button onClick={this.handleSubmit} className="button success" >Save</button>
