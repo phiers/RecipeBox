@@ -32,6 +32,7 @@
 
       input.qnty,
       input.qnty-add,
+      input.qnty-edit-add,
       input.qnty-edit {
         flex: 1;
         margin: .5rem 0;
@@ -39,6 +40,7 @@
       }
       input.ingredient,
       input.ingredient-add,
+      input.ingredient-edit-add,
       input.ingredient-edit {
         flex: 3;
         margin: .5rem 0;

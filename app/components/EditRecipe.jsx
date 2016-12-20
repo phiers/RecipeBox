@@ -77,8 +77,8 @@ class EditRecipe extends Component {
       if (i.item === '') { return null; }
       return (
         <div key={i.id} className="ingredients-list-item">
-          <input type="text" className="qnty-add" defaultValue={i.qnty} />
-          <input type="text" className="ingredient-add" defaultValue={i.item} />
+          <input type="text" className="qnty-edit-add" defaultValue={i.qnty} />
+          <input type="text" className="ingredient-edit-add" defaultValue={i.item} />
         </div>
       );
     });
