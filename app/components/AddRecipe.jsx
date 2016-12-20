@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { Link, browserHistory } from 'react-router';
 import { connect } from 'react-redux';
 import uuidV4 from 'uuid/v4';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 import RecipeItem from 'RecipeItem';  // eslint-disable-line
 import actions from 'actions'; // eslint-disable-line
@@ -53,7 +54,7 @@ class AddRecipe extends Component {
   renderIngredientsList() {
     return this.state.ingredients.map(ingredient =>
       <li key={ingredient.id} className="ingredients-list-item">
-        <em>{`${ingredient.qnty}`}</em>{`${ingredient.item}`}
+        {`${ingredient.qnty} ${ingredient.item}`}
       </li>,
     );
   }
@@ -66,7 +67,15 @@ class AddRecipe extends Component {
             <input type="text" id="name" className="recipe-name" placeholder="recipe name..." />
             <div id="ingredients-list">
               <p>Ingredients:</p>
-              <ul>{this.renderIngredientsList()}</ul>
+              <ul>
+                <ReactCSSTransitionGroup
+                  transitionName="ingred-anim"
+                  transitionEnterTimeout={500}
+                  transitionLeaveTimeout={500}
+                >
+                  {this.renderIngredientsList()}
+                </ReactCSSTransitionGroup>
+              </ul>
               <RecipeItem addItem={this.handleAddItem} />
             </div>
             <p>Notes:</p>

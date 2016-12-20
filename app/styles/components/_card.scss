@@ -2,7 +2,6 @@
 
   .card-header {
     background: black;
-    border-top: 10px solid goldenrod;
     color: white;
     font-weight: bold;
 
@@ -18,10 +17,22 @@
       color: white;
     }
   }
+
+  .card-detail.show {
+    opacity: 1;
+    max-height: 2000px;
+    visibility: visible;
+    transition: max-height .4s, visibility .4s, opacity 2s ease;
+
+  }
   .card-detail {
     background: white;
     padding-left: .6rem;
     padding-right: .6rem;
+    visibility: hidden;
+    max-height: 0;
+    opacity: 0;
+    transition: opacity .4s, visibility .4s, max-height .8s ease;
 
     h5 {
       text-decoration: underline;
@@ -49,6 +60,7 @@
         flex: 1;
         box-sizing: border-box;
         margin-bottom: 1rem;
+        text-decoration: none;
       }
       .button.alert {
         margin-right: .5rem;

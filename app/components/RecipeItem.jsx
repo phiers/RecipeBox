@@ -9,18 +9,18 @@ export default class RecipeItem extends Component {
   }
   handleClick(evt) {
     evt.preventDefault();
-    const qnty = document.querySelector('.qnty').value;
-    const ingredient = document.querySelector('.ingredient').value;
+    const qnty = document.querySelector('.qnty-add').value;
+    const ingredient = document.querySelector('.ingredient-add').value;
     this.props.addItem(qnty, ingredient);
-    document.querySelector('.qnty').value = '';
-    document.querySelector('.qnty').focus();
-    document.querySelector('.ingredient').value = '';
+    document.querySelector('.qnty-add').value = '';
+    document.querySelector('.qnty-add').focus();
+    document.querySelector('.ingredient-add').value = '';
   }
   render() {
     return (
       <div className="ingredients-list-item">
-        <input type="text" className="qnty" placeholder="quantity" />
-        <input type="text" className="ingredient" placeholder="ingredient" />
+        <input type="text" className="qnty-add" placeholder="quantity" />
+        <input type="text" className="ingredient-add" placeholder="ingredient" />
         <button onClick={this.handleClick} className="button default small">+</button>
       </div>
     );

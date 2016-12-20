@@ -1,6 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+
 
 import actions from 'actions'; // eslint-disable-line
 /* eslint-disable max-len */
@@ -22,7 +24,7 @@ class Recipe extends Component {
   }
   render() {
     const { id, expanded, name, notes, ingredients } = this.props;
-    const showDetail = expanded ? 'card-detail' : 'card-detail hide';
+    const showDetail = expanded ? 'card-detail show' : 'card-detail';
     const renderIngredientsList = () => {
       if (ingredients.length === 0) { return <p>None</p>; }
       return ingredients.map(i => (

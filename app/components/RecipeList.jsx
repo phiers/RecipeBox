@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 /* eslint-disable */
 import Recipe from 'Recipe';
@@ -25,7 +26,13 @@ class RecipeList extends Component {
     return (
       <div>
         <div className="recipe-list">
-          {renderRecipes()}
+          <ReactCSSTransitionGroup
+            transitionName="recipe-anim"
+            transitionEnterTimeout={500}
+            transitionLeaveTimeout={500}
+          >
+            {renderRecipes()}
+          </ReactCSSTransitionGroup>
         </div>
       </div>
     );

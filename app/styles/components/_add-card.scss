@@ -24,24 +24,30 @@
       text-decoration: underline;
       padding-top: 1rem;
     }
+
+    .ingred-anim-enter {
+      opacity: 0.01;
+    }
+    .ingred-anim-enter-active {
+      opacity: 1;
+      transition: opacity 500ms ease-in;
+    }
     .ingredients-list-item {
       display: flex;
       margin-bottom: .1rem;
       padding-top: 0;
       text-decoration: none;
-      input.qnty {
+      input.qnty,
+      input.qnty-add {
         flex: 1;
         margin: .5rem 0;
         padding: 0 0 0 5px;
       }
-      input.ingredient {
+      input.ingredient,
+      input.ingredient-add {
         flex: 3;
         margin: .5rem 0;
         padding: 0 0 0 5px;
-      }
-      em {
-        padding-right: .4em;
-        color: #2199E8;
       }
       button {
         font-size: 1.5rem;
